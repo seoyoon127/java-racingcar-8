@@ -50,4 +50,18 @@ class InputValidatorTest {
         List<String> list = InputValidator.validateCarNames(validInput);
         assertThat(list).isEqualTo(List.of("pobi", "woni", "lee"));
     }
+
+    @DisplayName("이동횟수가 양수가 아닐 시 예외발생")
+    @Test
+    void test_validateIsPositive(){
+        assertThatThrownBy(() -> InputValidator.validateGameRound("-5"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("유효한 시도 횟수일 시 통과")
+    @Test
+    void test_validateGameRound(){
+        int number = InputValidator.validateGameRound("5");
+        assertThat(number).isEqualTo(5);
+    }
 }
