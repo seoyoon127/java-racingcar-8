@@ -1,14 +1,27 @@
 package racingcar.utils;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InputValidator {
     public static List<String> validateCarNames(String CarNamesStr){
         List<String> carNames = convertToList(CarNamesStr);
+        validateIsEmpty(carNames);
         return carNames;
     }
 
     private static List<String> convertToList(String string){
-        return List.of(string.split(","));
+        return Arrays.stream(string.split(","))
+                .map(String::trim)
+                .collect(Collectors.toList());
+    }
+
+    private static void validateIsEmpty(List<String> list){
+        for (String str : list){
+            if (str.isEmpty()){
+                throw new IllegalArgumentException("[ERROR] 빈 문자열은 이름이 될 수 없습니다.");
+            }
+        }
     }
 }
