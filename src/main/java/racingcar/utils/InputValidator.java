@@ -3,7 +3,6 @@ package racingcar.utils;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class InputValidator {
@@ -40,6 +39,22 @@ public class InputValidator {
     private static void validateDuplicateName(List<String> list){
         if (list.size() != new HashSet<>(list).size()){
             throw new IllegalArgumentException("[ERROR] 중복된 이름은 사용할 수 없습니다.");
+        }
+    }
+
+    public static int validateGameRound(String gameRoundStr){
+        int gameRound = convertToInt(gameRoundStr);
+        validateIsPositive(gameRound);
+        return gameRound;
+    }
+
+    private static int convertToInt(String string){
+        return Integer.parseInt(string);
+    }
+
+    private static void validateIsPositive(int number){
+        if (number <= 0){
+            throw new IllegalArgumentException("[ERROR] 시도 횟수는 양수로 입력해주세요.");
         }
     }
 }
