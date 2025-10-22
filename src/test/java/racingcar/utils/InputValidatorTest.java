@@ -58,6 +58,13 @@ class InputValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("이동횟수가 정수가 아닐 시 예외발생")
+    @Test
+    void test_convertToInt(){
+        assertThatThrownBy(() -> InputValidator.validateGameRound("4.5"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("유효한 시도 횟수일 시 통과")
     @Test
     void test_validateGameRound(){

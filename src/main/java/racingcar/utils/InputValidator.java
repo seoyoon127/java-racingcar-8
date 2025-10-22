@@ -49,7 +49,11 @@ public class InputValidator {
     }
 
     private static int convertToInt(String string){
-        return Integer.parseInt(string);
+        try{
+            return Integer.parseInt(string);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR] 시도 횟수는 정수여야 합니다.");
+        }
     }
 
     private static void validateIsPositive(int number){
