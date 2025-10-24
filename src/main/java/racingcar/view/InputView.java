@@ -11,7 +11,7 @@ public class InputView {
     public List<String> readCarNames(){
         System.out.println(CAR_NAMES_MSG);
         String carNamesStr = Console.readLine();
-        return InputValidator.validateCarNames(carNamesStr);
+        return InputValidator.convertToList(carNamesStr);
     }
 
     public int readGameRound(){

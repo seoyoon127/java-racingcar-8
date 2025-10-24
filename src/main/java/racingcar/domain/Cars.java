@@ -1,12 +1,15 @@
 package racingcar.domain;
 
+import racingcar.domain.validator.CarsValidator;
+
 import java.util.List;
 
 public class Cars {
     private List<Car> carList;
 
-    public Cars(List<Car> carList) {
-        this.carList = carList;
+    public Cars(List<String> carNameList) {
+        CarsValidator.validateDuplicateName(carNameList);
+        this.carList = carNameList.stream().map(Car::new).toList();
     }
 
     public List<String> getWinners(){

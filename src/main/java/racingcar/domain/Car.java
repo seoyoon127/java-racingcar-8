@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.domain.validator.CarValidator;
 import racingcar.utils.RandomNumber;
 
 public class Car {
@@ -8,7 +9,8 @@ public class Car {
     private RandomNumber randomNumber;
 
     public Car(String name){
-        this.name = name;
+        CarValidator.validateCarName(name.trim());
+        this.name = name.trim();
         distance = 0;
         randomNumber = new RandomNumber();
     }
