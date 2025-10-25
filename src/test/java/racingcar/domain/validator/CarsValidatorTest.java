@@ -3,7 +3,6 @@ package racingcar.domain.validator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
 
 import java.util.List;
 
@@ -11,13 +10,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 
 class CarsValidatorTest {
-    static List<Car> duplicateInput;
-    static List<Car> validInput;
+    static List<String> duplicateInput;
+    static List<String> validInput;
 
     @BeforeEach
     void setup(){
-        duplicateInput = List.of(new Car("pobi"), new Car("pobi"));
-        validInput = List.of(new Car("pobi"), new Car("woni"));
+        duplicateInput = List.of("pobi", "woni", "pobi");
+        validInput = List.of("pobi", "woni", "lee");
     }
 
     @DisplayName("이름이 중복일 시 예외발생")
