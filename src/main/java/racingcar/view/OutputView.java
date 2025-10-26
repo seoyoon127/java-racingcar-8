@@ -3,7 +3,7 @@ package racingcar.view;
 import java.util.List;
 
 public class OutputView {
-    static String RESULT_PRINT_MSG = "실행 결과";
+    static String RESULT_PRINT_MSG = "\n실행 결과";
     static String WINNERS_MEG = "최종 우승자 : ";
 
     public void printResultMsg(){
